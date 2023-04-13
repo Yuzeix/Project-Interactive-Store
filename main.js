@@ -4,6 +4,8 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
 const menuAllSectorMobile = document.querySelector('.mobile-menu');
 const asideCarIcon = document.querySelector('.product-detail');
+const shoppingItems = document.querySelector('.cards-container')
+
 
  
 
@@ -12,7 +14,13 @@ menuAllSector.addEventListener('click', toggleMenuAllSectorMobile);
 menuCarIcon.addEventListener('click', toggleAsideCarIcon);
 
 function toggleDestokMenu() {
-desktopMenu.classList.toggle('inactive')
+    const isAsideCarClosed = asideCarIcon.classList.contains('inactive');
+
+    if (!isAsideCarClosed) {
+        asideCarIcon.classList.add('inactive');
+    }
+
+    desktopMenu.classList.toggle('inactive');
 }
 
 function toggleMenuAllSectorMobile() {
@@ -20,8 +28,8 @@ function toggleMenuAllSectorMobile() {
     const isAsideCarClosed = asideCarIcon.classList.contains('inactive')
 
     if (!isAsideCarClosed) {
-        asideCarIcon.classList.add('inactive')
-    };
+        asideCarIcon.classList.add('inactive');
+    }
 
     menuAllSectorMobile.classList.toggle('inactive')
 }
@@ -29,8 +37,89 @@ function toggleMenuAllSectorMobile() {
 function toggleAsideCarIcon() {
     const isMenuAllsectorMobileClosed = menuAllSectorMobile.classList.contains('inactive');
 
-    if (menuAllSectorMobile.classList.contains('inactive'));
+    if (!isMenuAllsectorMobileClosed) {
+        menuAllSectorMobile.classList.add('inactive');
+    }
 
     asideCarIcon.classList.toggle('inactive')
 
     }
+
+
+
+const productList = [];
+
+productList.push ({ 
+    name : "Bike",
+    price : 40000,
+    image : 'https://img.freepik.com/fotos-premium/bicicleta-montana-oro-representacion-3d-fondo-blanco-aislado_101266-23960.jpg?w=740',
+});
+
+productList.push ({ 
+    name : "TV LED",
+    price : 150000,
+    image : 'https://img.freepik.com/psd-premium/representacion-3d-aislada-maqueta-smart-tv_322208-226.jpg?w=740',
+});
+
+productList.push ({ 
+    name : "Notebook",
+    price : 180000,
+    image : 'https://img.freepik.com/foto-gratis/computadora-portatil-abierta_144627-12148.jpg?w=740&t=st=1681361388~exp=1681361988~hmac=81ea7b9f8dc84a16fee76569026f290f5559f73913ba2c9ef690bc323627ce42',
+});
+
+productList.push ({ 
+    name : "Bike",
+    price : 40000,
+    image : 'https://img.freepik.com/fotos-premium/bicicleta-montana-oro-representacion-3d-fondo-blanco-aislado_101266-23960.jpg?w=740',
+});
+
+productList.push ({ 
+    name : "TV LED",
+    price : 150000,
+    image : 'https://img.freepik.com/psd-premium/representacion-3d-aislada-maqueta-smart-tv_322208-226.jpg?w=740',
+});
+
+productList.push ({ 
+    name : "Notebook",
+    price : 180000,
+    image : 'https://img.freepik.com/foto-gratis/computadora-portatil-abierta_144627-12148.jpg?w=740&t=st=1681361388~exp=1681361988~hmac=81ea7b9f8dc84a16fee76569026f290f5559f73913ba2c9ef690bc323627ce42',
+});
+
+function detailsItems (exo) {
+    for (items of exo) {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+
+        const imgItem = document.createElement('img');
+        imgItem.setAttribute("src", items.image);
+
+        const productInfo = document.createElement('div');
+        productInfo.classList.add('product-info');
+
+        const divProductBox = document.createElement('div');
+        
+        const priceProduct = document.createElement('p');
+        priceProduct.innerText = '$' + items.price;
+        const nameProduct = document.createElement('p');
+        nameProduct.innerText = items.name;
+
+        divProductBox.appendChild(priceProduct);
+        divProductBox.appendChild(nameProduct);
+
+        const productInfoFigure = document.createElement('figure');
+        const iconCarAdd = document.createElement('img');
+        iconCarAdd.setAttribute('src',"./icons/bt_add_to_cart.svg");
+
+        productInfoFigure.appendChild(iconCarAdd);
+
+        productInfo.appendChild(divProductBox);
+        productInfo.appendChild(productInfoFigure);
+        
+        productCard.appendChild(imgItem);
+        productCard.appendChild(productInfo);
+
+        shoppingItems.appendChild(productCard);
+    }
+}
+
+detailsItems(productList)
