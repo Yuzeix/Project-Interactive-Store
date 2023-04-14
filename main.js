@@ -18,35 +18,24 @@ menuCarIcon.addEventListener('click', toggleAsideCarIcon);
 closeItemIcon.addEventListener('click', closeItemDetail);
 
 function toggleDestokMenu() {
-    const isAsideCarClosed = asideCarIcon.classList.contains('inactive');
-
-    if (!isAsideCarClosed) {
-        asideCarIcon.classList.add('inactive');
-    }
-
     desktopMenu.classList.toggle('inactive');
+    itemDescription.classList.add('inactive');
+    menuAllSectorMobile.classList.add('inactive');
+    asideCarIcon.classList.add('inactive');
 }
 
 function toggleMenuAllSectorMobile() {
-
-    const isAsideCarClosed = asideCarIcon.classList.contains('inactive')
-
-    if (!isAsideCarClosed) {
-        asideCarIcon.classList.add('inactive');
-    }
-
-    menuAllSectorMobile.classList.toggle('inactive')
+    menuAllSectorMobile.classList.toggle('inactive');
+    desktopMenu.classList.add('inactive');
+    itemDescription.classList.add('inactive');
+    asideCarIcon.classList.add('inactive');
 }
 
 function toggleAsideCarIcon() {
-    const isMenuAllsectorMobileClosed = menuAllSectorMobile.classList.contains('inactive');
-
-    if (!isMenuAllsectorMobileClosed) {
-        menuAllSectorMobile.classList.add('inactive');
-    }
-
-    asideCarIcon.classList.toggle('inactive')
-
+    asideCarIcon.classList.toggle('inactive');
+    menuAllSectorMobile.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+    itemDescription.classList.add('inactive');
 }
 
 function openItemDetail() {
