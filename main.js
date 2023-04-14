@@ -1,10 +1,13 @@
 const menuEmail = document.querySelector('.navbar-email');
 const menuAllSector = document.querySelector('.menu');
+const closeItemIcon = document.querySelector('.product-description-close');
 const desktopMenu = document.querySelector('.desktop-menu');
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
 const menuAllSectorMobile = document.querySelector('.mobile-menu');
 const asideCarIcon = document.querySelector('#product-detail');
-const shoppingItems = document.querySelector('.cards-container')
+const itemDescription = document.querySelector('#product-description');
+const shoppingItems = document.querySelector('.cards-container');
+
 
 
  
@@ -12,6 +15,7 @@ const shoppingItems = document.querySelector('.cards-container')
 menuEmail.addEventListener('click', toggleDestokMenu);
 menuAllSector.addEventListener('click', toggleMenuAllSectorMobile);
 menuCarIcon.addEventListener('click', toggleAsideCarIcon);
+closeItemIcon.addEventListener('click', closeItemDetail);
 
 function toggleDestokMenu() {
     const isAsideCarClosed = asideCarIcon.classList.contains('inactive');
@@ -43,7 +47,16 @@ function toggleAsideCarIcon() {
 
     asideCarIcon.classList.toggle('inactive')
 
-    }
+}
+
+function openItemDetail() {
+    itemDescription.classList.remove("inactive");
+
+}
+
+function closeItemDetail() {
+    itemDescription.classList.add("inactive");
+}
 
 
 
@@ -92,6 +105,8 @@ function detailsItems (exo) {
 
         const imgItem = document.createElement('img');
         imgItem.setAttribute("src", items.image);
+        imgItem.addEventListener("click", openItemDetail);
+        
 
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
@@ -122,4 +137,6 @@ function detailsItems (exo) {
     }
 }
 
-detailsItems(productList)
+detailsItems(productList);
+
+
